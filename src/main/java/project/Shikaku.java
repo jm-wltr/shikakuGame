@@ -1,4 +1,4 @@
-package shikaku;
+package project;
 
 /*
  * Shikaku Game
