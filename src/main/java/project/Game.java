@@ -9,7 +9,7 @@ public class Game {
      */
     public static void main(String[] args) {
         // Set the game you want to run here
-        Runnable game = new org.cis1200.shikaku.RunShikaku();
+        Runnable game = new project.RunShikaku();
 
         SwingUtilities.invokeLater(game);
     }
