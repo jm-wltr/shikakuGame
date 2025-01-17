@@ -38,8 +38,35 @@ public class RunShikaku implements Runnable {
 
     @Override
     public void run() {
+        // Determine OS type
+        String os = System.getProperty("os.name").toLowerCase();
+
+        // Select appropriate icon based on OS
+        String iconPath = os.contains("mac") ? "shikaku_mac.png" : "shikaku_win.png";
+
+        // Load the icon from resources
+        Image frameImage = null;
+        try {
+            frameImage = new ImageIcon(getClass().getClassLoader().getResource(iconPath)).getImage();
+        } catch (Exception e) {
+            System.err.println("Failed to load icon: " + iconPath);
+        }
+
+        // Set Dock icon for macOS
+        if (os.contains("mac") && frameImage != null) {
+            try {
+                Taskbar taskbar = Taskbar.getTaskbar();
+                taskbar.setIconImage(frameImage);
+            } catch (UnsupportedOperationException | SecurityException e) {
+                System.err.println("Failed to set Dock icon: " + e.getMessage());
+            }
+        }
+
         // Initialize the main frame
         final JFrame frame = new JFrame("Shikaku");
+        if (frameImage != null) {
+            frame.setIconImage(frameImage);
+        }
         frame.setLocation(100, 100);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
