@@ -1,6 +1,7 @@
-package org.cis1200.shikaku;
+package project;
 
 import org.junit.jupiter.api.Test;
+
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -8,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * File to test implementation.
  */
 
-public class GameTest {
+public class ShikakuTest {
 
     @Test
     public void testDefaultConstructorInitializes5x5Board() {
